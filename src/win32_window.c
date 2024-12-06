@@ -70,6 +70,9 @@ static DWORD getWindowExStyle(const _GLFWwindow* window)
 {
     DWORD style = WS_EX_APPWINDOW;
 
+    if(window->toolwindow)
+        return WS_EX_TOOLWINDOW;
+
     if (window->monitor || window->floating)
         style |= WS_EX_TOPMOST;
 

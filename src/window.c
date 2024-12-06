@@ -230,6 +230,7 @@ GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
     window->decorated        = wndconfig.decorated;
     window->headless         = wndconfig.headless;
     window->headlessdrag     = wndconfig.headlessdrag;
+    window->toolwindow       = wndconfig.toolwindow;
     window->autoIconify      = wndconfig.autoIconify;
     window->floating         = wndconfig.floating;
     window->focusOnShow      = wndconfig.focusOnShow;
@@ -272,7 +273,8 @@ void glfwDefaultWindowHints(void)
     _glfw.hints.window.visible      = GLFW_TRUE;
     _glfw.hints.window.decorated    = GLFW_TRUE;
     _glfw.hints.window.headless     = GLFW_FALSE;
-    _glfw.hints.window.headlessdrag     = GLFW_FALSE;
+    _glfw.hints.window.headlessdrag = GLFW_FALSE;
+    _glfw.hints.window.toolwindow   = GLFW_FALSE;
     _glfw.hints.window.focused      = GLFW_TRUE;
     _glfw.hints.window.autoIconify  = GLFW_TRUE;
     _glfw.hints.window.centerCursor = GLFW_TRUE;
@@ -361,6 +363,9 @@ GLFWAPI void glfwWindowHint(int hint, int value)
             return;
         case GLFW_HEADLESS_DRAG:
             _glfw.hints.window.headlessdrag = value ? GLFW_TRUE : GLFW_FALSE;
+            return;
+        case GLFW_TOOL_WINDOW:
+            _glfw.hints.window.toolwindow = value ? GLFW_TRUE : GLFW_FALSE;
             return;
         case GLFW_FOCUSED:
             _glfw.hints.window.focused = value ? GLFW_TRUE : GLFW_FALSE;

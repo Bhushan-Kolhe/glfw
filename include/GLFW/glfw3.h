@@ -1033,7 +1033,12 @@ extern "C" {
  *  Window has headlessdrag [window hint](@ref GLFW_HEADLESS_DRAG_hint) and
  *  [window attribute](@ref GLFW_HEADLESS_DRAG_attrib).
  */
-#define GLFW_HEADLESS_DRAG               0x00021012
+#define GLFW_HEADLESS_DRAG          0x00021012
+/*! @brief Window has tool_window window hint
+ *
+ *  Window has toolwindow [window hint](@ref GLFW_TOOL_WINDOW_hint) and
+ */
+#define GLFW_TOOL_WINDOW            0x00021013
 
 /*! @brief Context client API hint and attribute.
  *
