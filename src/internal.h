@@ -406,6 +406,7 @@ struct _GLFWwndconfig
     GLFWbool      resizable;
     GLFWbool      visible;
     GLFWbool      decorated;
+    GLFWbool      headless;
     GLFWbool      focused;
     GLFWbool      autoIconify;
     GLFWbool      floating;
@@ -534,6 +535,7 @@ struct _GLFWwindow
     // Window settings and state
     GLFWbool            resizable;
     GLFWbool            decorated;
+    GLFWbool            headless;
     GLFWbool            autoIconify;
     GLFWbool            floating;
     GLFWbool            focusOnShow;
@@ -744,6 +746,7 @@ struct _GLFWplatform
     float (*getWindowOpacity)(_GLFWwindow*);
     void (*setWindowResizable)(_GLFWwindow*,GLFWbool);
     void (*setWindowDecorated)(_GLFWwindow*,GLFWbool);
+    void (*setWindowHeadless)(_GLFWwindow*, GLFWbool);
     void (*setWindowFloating)(_GLFWwindow*,GLFWbool);
     void (*setWindowOpacity)(_GLFWwindow*,float);
     void (*setWindowMousePassthrough)(_GLFWwindow*,GLFWbool);

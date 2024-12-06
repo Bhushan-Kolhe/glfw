@@ -1022,6 +1022,12 @@ extern "C" {
  *  [attribute](@ref GLFW_DOUBLEBUFFER_attrib).
  */
 #define GLFW_DOUBLEBUFFER           0x00021010
+/*! @brief Window has headless window hint and attribute
+ *
+ *  Window has headless [window hint](@ref GLFW_HEADLESS_hint) and
+ *  [window attribute](@ref GLFW_HEADLESS_attrib).
+ */
+#define GLFW_HEADLESS               0x00021011
 
 /*! @brief Context client API hint and attribute.
  *

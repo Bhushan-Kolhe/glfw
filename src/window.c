@@ -228,6 +228,7 @@ GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
     window->monitor          = (_GLFWmonitor*) monitor;
     window->resizable        = wndconfig.resizable;
     window->decorated        = wndconfig.decorated;
+window->headless             = wndconfig.headless;
     window->autoIconify      = wndconfig.autoIconify;
     window->floating         = wndconfig.floating;
     window->focusOnShow      = wndconfig.focusOnShow;
@@ -269,6 +270,7 @@ void glfwDefaultWindowHints(void)
     _glfw.hints.window.resizable    = GLFW_TRUE;
     _glfw.hints.window.visible      = GLFW_TRUE;
     _glfw.hints.window.decorated    = GLFW_TRUE;
+    _glfw.hints.window.headless     = GLFW_FALSE;
     _glfw.hints.window.focused      = GLFW_TRUE;
     _glfw.hints.window.autoIconify  = GLFW_TRUE;
     _glfw.hints.window.centerCursor = GLFW_TRUE;
@@ -351,6 +353,9 @@ GLFWAPI void glfwWindowHint(int hint, int value)
             return;
         case GLFW_DECORATED:
             _glfw.hints.window.decorated = value ? GLFW_TRUE : GLFW_FALSE;
+            return;
+        case GLFW_HEADLESS:
+            _glfw.hints.window.headless = value ? GLFW_TRUE : GLFW_FALSE;
             return;
         case GLFW_FOCUSED:
             _glfw.hints.window.focused = value ? GLFW_TRUE : GLFW_FALSE;
@@ -906,6 +911,8 @@ GLFWAPI int glfwGetWindowAttrib(GLFWwindow* handle, int attrib)
             return window->resizable;
         case GLFW_DECORATED:
             return window->decorated;
+        case GLFW_HEADLESS:
+            return window->headless;
         case GLFW_FLOATING:
             return window->floating;
         case GLFW_AUTO_ICONIFY:
@@ -967,6 +974,11 @@ GLFWAPI void glfwSetWindowAttrib(GLFWwindow* handle, int attrib, int value)
                 _glfw.platform.setWindowDecorated(window, value);
             return;
 
+        case GLFW_HEADLESS:
+            window->headless = value;
+            if(!window->monitor)
+                _glfw.platform.setWindowHeadless(window, value);
+            return;
         case GLFW_FLOATING:
             window->floating = value;
             if (!window->monitor)
