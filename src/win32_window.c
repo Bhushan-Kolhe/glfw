@@ -1361,7 +1361,13 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
             ScreenToClient(hWnd, &pt);
             RECT rc;
             GetClientRect(hWnd, &rc);
-            
+
+            if(window->headlessdrag){
+                if(pt.y > border.top && pt.y < (border.top + 20)){
+                    return HTCAPTION;
+                }
+            }
+
             enum { left = 1, top = 2, right = 4, bottom = 8 };
             int hit = 0;
             if (pt.x < border.left)               hit |= left;
