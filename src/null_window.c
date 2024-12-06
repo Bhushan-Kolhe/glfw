@@ -399,6 +399,14 @@ void _glfwSetWindowDecoratedNull(_GLFWwindow* window, GLFWbool enabled)
     window->null.decorated = enabled;
 }
 
+void _glfwSetWindowHeadlessNull(_GLFWwindow* window, GLFWbool enabled){
+    window->null.headless = enabled;
+}
+
+void _glfwSetWindowHeadlessDragNull(_GLFWwindow* window, GLFWbool enabled){
+    window->null.headlessdrag = enabled;
+}
+
 void _glfwSetWindowFloatingNull(_GLFWwindow* window, GLFWbool enabled)
 {
     window->null.floating = enabled;

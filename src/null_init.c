@@ -98,6 +98,8 @@ GLFWbool _glfwConnectNull(int platformID, _GLFWplatform* platform)
         .getWindowOpacity = _glfwGetWindowOpacityNull,
         .setWindowResizable = _glfwSetWindowResizableNull,
         .setWindowDecorated = _glfwSetWindowDecoratedNull,
+        .setWindowHeadless = _glfwSetWindowHeadlessNull,
+        .setWindowHeadlessDrag = _glfwSetWindowHeadlessDragNull,
         .setWindowFloating = _glfwSetWindowFloatingNull,
         .setWindowOpacity = _glfwSetWindowOpacityNull,
         .setWindowMousePassthrough = _glfwSetWindowMousePassthroughNull,

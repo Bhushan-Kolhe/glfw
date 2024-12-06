@@ -2604,6 +2604,18 @@ void _glfwSetWindowDecoratedWayland(_GLFWwindow* window, GLFWbool enabled)
     }
 }
 
+void _glfwSetWindowHeadlessWayland(_GLFWwindow* window, GLFWbool enabled){
+    // TODO: implement headless window on wayland
+    _glfwInputError(GLFW_PLATFORM_ERROR,
+        "Cocoa: Window attribute setting not implemented yet");
+}
+
+void _glfwSetWindowHeadlessDragWayland(_GLFWwindow* window, GLFWbool enabled){
+    // TODO: implement headless window on wayland
+    _glfwInputError(GLFW_PLATFORM_ERROR,
+        "Cocoa: Window attribute setting not implemented yet");
+}
+
 void _glfwSetWindowFloatingWayland(_GLFWwindow* window, GLFWbool enabled)
 {
     _glfwInputError(GLFW_FEATURE_UNAVAILABLE,

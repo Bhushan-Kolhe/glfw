@@ -1472,6 +1472,18 @@ void _glfwSetWindowDecoratedCocoa(_GLFWwindow* window, GLFWbool enabled)
     } // autoreleasepool
 }
 
+void _glfwSetWindowHeadlessCocoa(_GLFWwindow* window, GLFWbool enabled){
+    // TODO: implement headless window on mac
+    _glfwInputError(GLFW_PLATFORM_ERROR,
+        "Cocoa: Window attribute setting not implemented yet");
+}
+
+void _glfwSetWindowHeadlessDragCocoa(_GLFWwindow* window, GLFWbool enabled){
+    // TODO: implement headless window on mac
+    _glfwInputError(GLFW_PLATFORM_ERROR,
+        "Cocoa: Window attribute setting not implemented yet");
+}
+
 void _glfwSetWindowFloatingCocoa(_GLFWwindow* window, GLFWbool enabled)
 {
     @autoreleasepool {

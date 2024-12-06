@@ -2643,6 +2643,18 @@ void _glfwSetWindowDecoratedX11(_GLFWwindow* window, GLFWbool enabled)
                     sizeof(hints) / sizeof(long));
 }
 
+void _glfwSetWindowHeadlessX11(_GLFWwindow* window, GLFWbool enabled){
+    // TODO: implement headless window on wayland
+    _glfwInputError(GLFW_PLATFORM_ERROR,
+        "Cocoa: Window attribute setting not implemented yet");
+}
+
+void _glfwSetWindowHeadlessDragX11(_GLFWwindow* window, GLFWbool enabled){
+    // TODO: implement headless window on wayland
+    _glfwInputError(GLFW_PLATFORM_ERROR,
+        "Cocoa: Window attribute setting not implemented yet");
+}
+
 void _glfwSetWindowFloatingX11(_GLFWwindow* window, GLFWbool enabled)
 {
     if (!_glfw.x11.NET_WM_STATE || !_glfw.x11.NET_WM_STATE_ABOVE)

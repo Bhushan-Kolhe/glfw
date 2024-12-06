@@ -243,6 +243,8 @@ GLFWbool _glfwWindowHoveredCocoa(_GLFWwindow* window);
 GLFWbool _glfwFramebufferTransparentCocoa(_GLFWwindow* window);
 void _glfwSetWindowResizableCocoa(_GLFWwindow* window, GLFWbool enabled);
 void _glfwSetWindowDecoratedCocoa(_GLFWwindow* window, GLFWbool enabled);
+void _glfwSetWindowHeadlessCocoa(_GLFWwindow* window, GLFWbool enabled);
+void _glfwSetWindowHeadlessDragCocoa(_GLFWwindow* window, GLFWbool enabled);
 void _glfwSetWindowFloatingCocoa(_GLFWwindow* window, GLFWbool enabled);
 float _glfwGetWindowOpacityCocoa(_GLFWwindow* window);
 void _glfwSetWindowOpacityCocoa(_GLFWwindow* window, float opacity);
