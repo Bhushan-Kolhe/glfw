@@ -409,6 +409,7 @@ struct _GLFWwndconfig
     GLFWbool      headless;
     GLFWbool      headlessdrag;
     GLFWbool      toolwindow;
+    GLFWbool      excludefrompeek;
     GLFWbool      focused;
     GLFWbool      autoIconify;
     GLFWbool      floating;
@@ -540,6 +541,7 @@ struct _GLFWwindow
     GLFWbool            headless;
     GLFWbool            headlessdrag;
     GLFWbool            toolwindow;
+    GLFWbool            excludefrompeek;
     GLFWbool            autoIconify;
     GLFWbool            floating;
     GLFWbool            focusOnShow;

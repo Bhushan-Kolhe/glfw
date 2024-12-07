@@ -563,6 +563,15 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 
             case WM_CREATE:
             {
+                if(_glfw.hints.window.excludefrompeek){
+                    int val = 1;
+                    HRESULT hResult = DwmSetWindowAttribute(hWnd, 12, &val, sizeof(BOOL));
+                    if (!SUCCEEDED(hResult))
+                    {
+                        _glfwInputError(GLFW_CONTEXT_DEBUG, "DwmSetWindowAttribute Failed");
+                    }
+                }
+
                 if (_glfw.hints.window.headless == GLFW_FALSE)
                     break;
 

@@ -1039,6 +1039,11 @@ extern "C" {
  *  Window has toolwindow [window hint](@ref GLFW_TOOL_WINDOW_hint) and
  */
 #define GLFW_TOOL_WINDOW            0x00021013
+/*! @brief Window has GLFW_EXCLUDE_FROM_PEEK window hint
+ *
+ *  Window has toolwindow [window hint](@ref GLFW_EXCLUDE_FROM_PEEK_hint) and
+ */
+#define GLFW_EXCLUDE_FROM_PEEK      0x00021014
 
 /*! @brief Context client API hint and attribute.
  *

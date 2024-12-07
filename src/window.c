@@ -231,6 +231,7 @@ GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
     window->headless         = wndconfig.headless;
     window->headlessdrag     = wndconfig.headlessdrag;
     window->toolwindow       = wndconfig.toolwindow;
+    window->excludefrompeek  = wndconfig.excludefrompeek;
     window->autoIconify      = wndconfig.autoIconify;
     window->floating         = wndconfig.floating;
     window->focusOnShow      = wndconfig.focusOnShow;
@@ -269,18 +270,19 @@ void glfwDefaultWindowHints(void)
 
     // The default is a focused, visible, resizable window with decorations
     memset(&_glfw.hints.window, 0, sizeof(_glfw.hints.window));
-    _glfw.hints.window.resizable    = GLFW_TRUE;
-    _glfw.hints.window.visible      = GLFW_TRUE;
-    _glfw.hints.window.decorated    = GLFW_TRUE;
-    _glfw.hints.window.headless     = GLFW_FALSE;
-    _glfw.hints.window.headlessdrag = GLFW_FALSE;
-    _glfw.hints.window.toolwindow   = GLFW_FALSE;
-    _glfw.hints.window.focused      = GLFW_TRUE;
-    _glfw.hints.window.autoIconify  = GLFW_TRUE;
-    _glfw.hints.window.centerCursor = GLFW_TRUE;
-    _glfw.hints.window.focusOnShow  = GLFW_TRUE;
-    _glfw.hints.window.xpos         = GLFW_ANY_POSITION;
-    _glfw.hints.window.ypos         = GLFW_ANY_POSITION;
+    _glfw.hints.window.resizable        = GLFW_TRUE;
+    _glfw.hints.window.visible          = GLFW_TRUE;
+    _glfw.hints.window.decorated        = GLFW_TRUE;
+    _glfw.hints.window.headless         = GLFW_FALSE;
+    _glfw.hints.window.headlessdrag     = GLFW_FALSE;
+    _glfw.hints.window.toolwindow       = GLFW_FALSE;
+    _glfw.hints.window.excludefrompeek  = GLFW_FALSE;
+    _glfw.hints.window.focused          = GLFW_TRUE;
+    _glfw.hints.window.autoIconify      = GLFW_TRUE;
+    _glfw.hints.window.centerCursor     = GLFW_TRUE;
+    _glfw.hints.window.focusOnShow      = GLFW_TRUE;
+    _glfw.hints.window.xpos             = GLFW_ANY_POSITION;
+    _glfw.hints.window.ypos             = GLFW_ANY_POSITION;
     _glfw.hints.window.scaleFramebuffer = GLFW_TRUE;
 
     // The default is 24 bits of color, 24 bits of depth and 8 bits of stencil,
@@ -366,6 +368,9 @@ GLFWAPI void glfwWindowHint(int hint, int value)
             return;
         case GLFW_TOOL_WINDOW:
             _glfw.hints.window.toolwindow = value ? GLFW_TRUE : GLFW_FALSE;
+            return;
+        case GLFW_EXCLUDE_FROM_PEEK:
+            _glfw.hints.window.excludefrompeek = value ? GLFW_TRUE : GLFW_FALSE;
             return;
         case GLFW_FOCUSED:
             _glfw.hints.window.focused = value ? GLFW_TRUE : GLFW_FALSE;
