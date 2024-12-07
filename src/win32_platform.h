@@ -142,6 +142,8 @@ typedef struct
  #include <dwmapi.h>
 #endif /*Windows Vista*/
 
+#include <Uxtheme.h>
+
 #ifndef DPI_ENUMS_DECLARED
 typedef enum
 {
@@ -301,10 +303,14 @@ typedef HRESULT (WINAPI * PFN_DwmIsCompositionEnabled)(BOOL*);
 typedef HRESULT (WINAPI * PFN_DwmFlush)(VOID);
 typedef HRESULT(WINAPI * PFN_DwmEnableBlurBehindWindow)(HWND,const DWM_BLURBEHIND*);
 typedef HRESULT (WINAPI * PFN_DwmGetColorizationColor)(DWORD*,BOOL*);
+typedef HRESULT (WINAPI * PFN_DwmSetWindowAttribute)(HWND,DWORD,LPCVOID,DWORD);
+typedef HRESULT (WINAPI * PFN_DwmExtendFrameIntoClientArea)(HWND,const MARGINS*);
 #define DwmIsCompositionEnabled _glfw.win32.dwmapi.IsCompositionEnabled
 #define DwmFlush _glfw.win32.dwmapi.Flush
 #define DwmEnableBlurBehindWindow _glfw.win32.dwmapi.EnableBlurBehindWindow
 #define DwmGetColorizationColor _glfw.win32.dwmapi.GetColorizationColor
+#define DwmSetWindowAttribute _glfw.win32.dwmapi.SetWindowAttribute
+#define DwmExtendFrameIntoClientArea _glfw.win32.dwmapi.ExtendFrameIntoClientArea
 
 // shcore.dll function pointer typedefs
 typedef HRESULT (WINAPI * PFN_SetProcessDpiAwareness)(PROCESS_DPI_AWARENESS);
@@ -485,11 +491,13 @@ typedef struct _GLFWlibraryWin32
     } user32;
 
     struct {
-        HINSTANCE                       instance;
-        PFN_DwmIsCompositionEnabled     IsCompositionEnabled;
-        PFN_DwmFlush                    Flush;
-        PFN_DwmEnableBlurBehindWindow   EnableBlurBehindWindow;
-        PFN_DwmGetColorizationColor     GetColorizationColor;
+        HINSTANCE                           instance;
+        PFN_DwmIsCompositionEnabled         IsCompositionEnabled;
+        PFN_DwmFlush                        Flush;
+        PFN_DwmEnableBlurBehindWindow       EnableBlurBehindWindow;
+        PFN_DwmGetColorizationColor         GetColorizationColor;
+        PFN_DwmSetWindowAttribute           SetWindowAttribute;
+        PFN_DwmExtendFrameIntoClientArea    ExtendFrameIntoClientArea;
     } dwmapi;
 
     struct {
