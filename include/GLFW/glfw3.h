@@ -1044,6 +1044,12 @@ extern "C" {
  *  Window has toolwindow [window hint](@ref GLFW_EXCLUDE_FROM_PEEK_hint) and
  */
 #define GLFW_EXCLUDE_FROM_PEEK      0x00021014
+/*! @brief Window has GLFW_ALWAYS_BOTTOM_WINDOW window hint
+ *
+ *  Window has always bottom window hint [window hint](@ref GLFW_ALWAYS_BOTTOM_WINDOW_hint) and
+ */
+#define GLFW_ALWAYS_BOTTOM_WINDOW   0x00021015
+
 
 /*! @brief Context client API hint and attribute.
  *

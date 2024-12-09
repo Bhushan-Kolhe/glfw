@@ -225,18 +225,19 @@ GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
     window->videoMode.blueBits    = fbconfig.blueBits;
     window->videoMode.refreshRate = _glfw.hints.refreshRate;
 
-    window->monitor          = (_GLFWmonitor*) monitor;
-    window->resizable        = wndconfig.resizable;
-    window->decorated        = wndconfig.decorated;
-    window->headless         = wndconfig.headless;
-    window->headlessdrag     = wndconfig.headlessdrag;
-    window->toolwindow       = wndconfig.toolwindow;
-    window->excludefrompeek  = wndconfig.excludefrompeek;
-    window->autoIconify      = wndconfig.autoIconify;
-    window->floating         = wndconfig.floating;
-    window->focusOnShow      = wndconfig.focusOnShow;
-    window->mousePassthrough = wndconfig.mousePassthrough;
-    window->cursorMode       = GLFW_CURSOR_NORMAL;
+    window->monitor             = (_GLFWmonitor*) monitor;
+    window->resizable           = wndconfig.resizable;
+    window->decorated           = wndconfig.decorated;
+    window->headless            = wndconfig.headless;
+    window->headlessdrag        = wndconfig.headlessdrag;
+    window->toolwindow          = wndconfig.toolwindow;
+    window->alwaysbottomwindow  = wndconfig.alwaysbottomwindow;
+    window->excludefrompeek     = wndconfig.excludefrompeek;
+    window->autoIconify         = wndconfig.autoIconify;
+    window->floating            = wndconfig.floating;
+    window->focusOnShow         = wndconfig.focusOnShow;
+    window->mousePassthrough    = wndconfig.mousePassthrough;
+    window->cursorMode          = GLFW_CURSOR_NORMAL;
 
     window->doublebuffer = fbconfig.doublebuffer;
 
@@ -270,20 +271,21 @@ void glfwDefaultWindowHints(void)
 
     // The default is a focused, visible, resizable window with decorations
     memset(&_glfw.hints.window, 0, sizeof(_glfw.hints.window));
-    _glfw.hints.window.resizable        = GLFW_TRUE;
-    _glfw.hints.window.visible          = GLFW_TRUE;
-    _glfw.hints.window.decorated        = GLFW_TRUE;
-    _glfw.hints.window.headless         = GLFW_FALSE;
-    _glfw.hints.window.headlessdrag     = GLFW_FALSE;
-    _glfw.hints.window.toolwindow       = GLFW_FALSE;
-    _glfw.hints.window.excludefrompeek  = GLFW_FALSE;
-    _glfw.hints.window.focused          = GLFW_TRUE;
-    _glfw.hints.window.autoIconify      = GLFW_TRUE;
-    _glfw.hints.window.centerCursor     = GLFW_TRUE;
-    _glfw.hints.window.focusOnShow      = GLFW_TRUE;
-    _glfw.hints.window.xpos             = GLFW_ANY_POSITION;
-    _glfw.hints.window.ypos             = GLFW_ANY_POSITION;
-    _glfw.hints.window.scaleFramebuffer = GLFW_TRUE;
+    _glfw.hints.window.resizable            = GLFW_TRUE;
+    _glfw.hints.window.visible              = GLFW_TRUE;
+    _glfw.hints.window.decorated            = GLFW_TRUE;
+    _glfw.hints.window.headless             = GLFW_FALSE;
+    _glfw.hints.window.headlessdrag         = GLFW_FALSE;
+    _glfw.hints.window.toolwindow           = GLFW_FALSE;
+    _glfw.hints.window.alwaysbottomwindow   = GLFW_FALSE;
+    _glfw.hints.window.excludefrompeek      = GLFW_FALSE;
+    _glfw.hints.window.focused              = GLFW_TRUE;
+    _glfw.hints.window.autoIconify          = GLFW_TRUE;
+    _glfw.hints.window.centerCursor         = GLFW_TRUE;
+    _glfw.hints.window.focusOnShow          = GLFW_TRUE;
+    _glfw.hints.window.xpos                 = GLFW_ANY_POSITION;
+    _glfw.hints.window.ypos                 = GLFW_ANY_POSITION;
+    _glfw.hints.window.scaleFramebuffer     = GLFW_TRUE;
 
     // The default is 24 bits of color, 24 bits of depth and 8 bits of stencil,
     // double buffered
@@ -368,6 +370,9 @@ GLFWAPI void glfwWindowHint(int hint, int value)
             return;
         case GLFW_TOOL_WINDOW:
             _glfw.hints.window.toolwindow = value ? GLFW_TRUE : GLFW_FALSE;
+            return;
+        case GLFW_ALWAYS_BOTTOM_WINDOW:
+            _glfw.hints.window.alwaysbottomwindow = value ? GLFW_TRUE : GLFW_FALSE;
             return;
         case GLFW_EXCLUDE_FROM_PEEK:
             _glfw.hints.window.excludefrompeek = value ? GLFW_TRUE : GLFW_FALSE;

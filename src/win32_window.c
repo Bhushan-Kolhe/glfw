@@ -1399,6 +1399,19 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
             return HTCLIENT;
             
         }
+
+        case WM_WINDOWPOSCHANGING:
+        {
+            if(window->alwaysbottomwindow == GLFW_FALSE)
+                break;
+            
+            if(hWnd == GetDesktopWindow())
+                _glfwInputError(GLFW_CONTEXT_DEBUG, "Window Changing log");
+
+            WINDOWPOS* pos = (WINDOWPOS*)lParam;
+            pos->hwndInsertAfter = HWND_BOTTOM;
+            return 0;
+        }
     }
 
     return DefWindowProcW(hWnd, uMsg, wParam, lParam);
