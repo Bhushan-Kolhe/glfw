@@ -615,6 +615,11 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 
     switch (uMsg)
     {
+        case WM_WINDOWPOSCHANGING:
+		{
+			((LPWINDOWPOS)lParam)->flags |= SWP_NOZORDER;
+			return 0;
+		}
         case WM_MOUSEACTIVATE:
         {
             // HACK: Postpone cursor disabling when the window was activated by

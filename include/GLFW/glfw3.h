@@ -1044,6 +1044,11 @@ extern "C" {
  *  Window has toolwindow [window hint](@ref GLFW_EXCLUDE_FROM_PEEK_hint) and
  */
 #define GLFW_EXCLUDE_FROM_PEEK      0x00021014
+/*! @brief Window has GLFW_ZPOS_FLAGS window hint
+ *
+ *  Window has toolwindow [window hint](@ref GLFW_EXCLUDE_FROM_PEEK_hint) and
+ */
+#define GLFW_ZPOS_FLAGS              0x00021015
 
 /*! @brief Context client API hint and attribute.
  *

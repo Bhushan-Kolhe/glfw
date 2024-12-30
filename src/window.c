@@ -232,6 +232,7 @@ GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
     window->headlessdrag     = wndconfig.headlessdrag;
     window->toolwindow       = wndconfig.toolwindow;
     window->excludefrompeek  = wndconfig.excludefrompeek;
+    window->zposflags        = wndconfig.zposflags;
     window->autoIconify      = wndconfig.autoIconify;
     window->floating         = wndconfig.floating;
     window->focusOnShow      = wndconfig.focusOnShow;
@@ -277,6 +278,7 @@ void glfwDefaultWindowHints(void)
     _glfw.hints.window.headlessdrag     = GLFW_FALSE;
     _glfw.hints.window.toolwindow       = GLFW_FALSE;
     _glfw.hints.window.excludefrompeek  = GLFW_FALSE;
+    _glfw.hints.window.zposflags        = GLFW_FALSE;
     _glfw.hints.window.focused          = GLFW_TRUE;
     _glfw.hints.window.autoIconify      = GLFW_TRUE;
     _glfw.hints.window.centerCursor     = GLFW_TRUE;
@@ -371,6 +373,9 @@ GLFWAPI void glfwWindowHint(int hint, int value)
             return;
         case GLFW_EXCLUDE_FROM_PEEK:
             _glfw.hints.window.excludefrompeek = value ? GLFW_TRUE : GLFW_FALSE;
+            return;
+        case GLFW_ZPOS_FLAGS:
+            _glfw.hints.window.zposflags = value ? GLFW_TRUE : GLFW_FALSE;
             return;
         case GLFW_FOCUSED:
             _glfw.hints.window.focused = value ? GLFW_TRUE : GLFW_FALSE;
